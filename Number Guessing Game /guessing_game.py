@@ -1,22 +1,11 @@
-"""
-Python Web Development Techdegree
-Project 1 - Number Guessing Game
---------------------------------
-
-For this first project we will be using Workspaces. 
-
-NOTE: If you strongly prefer to work locally on your own computer, you can totally do that by clicking: File -> Download Workspace in the file menu after you fork the snapshot of this workspace.
-
-"""
-
 import random
 
-
+best_score = 10
 def start_game():
     print('''*********************************************************  
       Welcome to Aaron's Guessing Game 
 **********************************************************''')  
-
+    global best_score
     solution = random.randint(1,10)
     number_of_trys = 0 
     while True:
@@ -26,8 +15,10 @@ def start_game():
           print("Please choose a number between 1 and 10")
         elif check == solution:
           number_of_trys += 1
-          print("You Got It!!!!! It only took you {} number of tries Great           Job!".format(number_of_trys))
-          print("**************** Game Over! *******************")
+          print("You Got It!!!!! It only took you {} number of tries Great Job!".format(number_of_trys))
+          if number_of_trys < best_score:
+            best_score = number_of_trys
+            return best_score             
           break
         elif check > solution:
           print("It's lower")
@@ -37,9 +28,24 @@ def start_game():
           number_of_trys += 1      
       except ValueError:
           print("Sorry we where expecting just a number try again")
-          
-
+def play_agin():
+  print("Current low score is {}".format(best_score))
+  while True :
+    try:
+      restart_game = str(input("See if you can beat that would you like you try agin [Y]es/[N]o: "))  
+      if restart_game.upper() == "Y" or restart_game.upper() == "YES":
+          start_game()
+      elif restart_game.upper() == "N" or restart_game.upper() == "NO":
+          print("The best score was {}".format(best_score))
+          print("********************* Game Over ****************")
+          break 
+      else:
+          print("Enter y or yes to play agin/n or no to end game")       
+    except Exception as e:
+      raise e
+        
 
 if __name__ == '__main__':
     # Kick off the program by calling the start_game function.
     start_game()
+    play_agin()
