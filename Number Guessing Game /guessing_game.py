@@ -1,4 +1,5 @@
 import random
+
 print('''*********************************************************  
       Welcome to Aaron's Guessing Game 
 **********************************************************''')  
@@ -33,7 +34,7 @@ def play_agin():
   
   while True :
     try:
-      restart_game = str(input("Current low score is {} See if you can beat that would you like you try agin [Y]es/[N]o: ".format(best_score)))  
+      restart_game = str(raw_input("Current low score is {} See if you can beat that would you like you try agin [Y]es/[N]o: ".format(best_score)))  
       if restart_game.upper() == "Y" or restart_game.upper() == "YES":
           start_game()
       elif restart_game.upper() == "N" or restart_game.upper() == "NO":
