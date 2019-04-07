@@ -30,18 +30,18 @@ def start_game():
       except ValueError:
           print("Sorry we where expecting just a number try again")
 def play_agin():
+  
   while True :
     try:
-      print("Current low score is {}".format(best_score))
-      restart_game = str(input("See if you can beat that would you like you try agin [Y]es/[N]o: "))  
+      restart_game = str(input("Current low score is {} See if you can beat that would you like you try agin [Y]es/[N]o: ".format(best_score)))  
       if restart_game.upper() == "Y" or restart_game.upper() == "YES":
           start_game()
       elif restart_game.upper() == "N" or restart_game.upper() == "NO":
-          print("The best score was {}".format(best_score))
-          print("********************* Game Over ****************")
+          print("The lowest score of the game was {}".format(best_score))
+          print("********************* Game Over **********************************")
           break 
       else:
-          print("Enter y or yes to play agin/n or no to end game")       
+          print("Opps we where expecting a Y for Yes or a  N for No")       
     except Exception as e:
       raise e
         
