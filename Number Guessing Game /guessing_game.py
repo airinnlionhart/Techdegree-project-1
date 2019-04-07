@@ -1,10 +1,11 @@
 import random
-
-best_score = 10
-def start_game():
-    print('''*********************************************************  
+print('''*********************************************************  
       Welcome to Aaron's Guessing Game 
 **********************************************************''')  
+
+best_score = 10
+
+def start_game():
     global best_score
     solution = random.randint(1,10)
     number_of_trys = 0 
@@ -29,9 +30,9 @@ def start_game():
       except ValueError:
           print("Sorry we where expecting just a number try again")
 def play_agin():
-  print("Current low score is {}".format(best_score))
   while True :
     try:
+      print("Current low score is {}".format(best_score))
       restart_game = str(input("See if you can beat that would you like you try agin [Y]es/[N]o: "))  
       if restart_game.upper() == "Y" or restart_game.upper() == "YES":
           start_game()
